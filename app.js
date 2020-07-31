@@ -52,7 +52,7 @@ app.get("/posts/:postName",function(req,res){
     var storedTitle=_.lowerCase(posts[i].title);
     if(storedTitle===requestedTitle){
       flag=true;
-      res.render("post",{postTitle:posts[i].title,postContent:posts[i].content.substring(0,20)});
+      res.render("post",{postTitle:posts[i].title,postContent:posts[i].content});
       break;
     }
   }
