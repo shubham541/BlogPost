@@ -56,6 +56,7 @@ app.post("/compose",function(req,res){
   res.redirect("/");
 });
 
+<<<<<<< HEAD
 app.get("/posts/:postId",function(req,res){
   var requestedPostId=req.params.postId;
   Post.findOne({_id:requestedPostId},function(err,result){
@@ -63,6 +64,18 @@ app.get("/posts/:postId",function(req,res){
       console.log(err);
     }else{
       res.render("post",{postTitle:result.title,postContent:result.content});
+=======
+
+app.get("/posts/:postName",function(req,res){
+  var flag=false;
+  var requestedTitle=_.lowerCase(req.params.postName);
+  for(var i=0;i<posts.length;i++){
+    var storedTitle=_.lowerCase(posts[i].title);
+    if(storedTitle===requestedTitle){
+      flag=true;
+      res.render("post",{postTitle:posts[i].title,postContent:posts[i].content});
+      break;
+>>>>>>> 8b7574e9722012af23c10017726d0b873324838b
     }
 
   });
